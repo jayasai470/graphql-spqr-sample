@@ -20,6 +20,7 @@ import static graphql.schema.GraphQLInputObjectType.newInputObject;
 public class GeoJsonSpqrMapper extends ObjectTypeMapper {
     @Override
     public GraphQLInputObjectType toGraphQLInputType(String typeName, AnnotatedType javaType, OperationMapper operationMapper, BuildContext buildContext) {
+        log.info("cutsom mapper for geojson ----------------------->");
         GraphQLInputObjectType.Builder typeBuilder = newInputObject()
                 .name(typeName)
                 .description(buildContext.typeInfoGenerator.generateInputTypeDescription(javaType, buildContext.messageBundle));
@@ -33,6 +34,7 @@ public class GeoJsonSpqrMapper extends ObjectTypeMapper {
 
     @Override
     public boolean supports(AnnotatedType type) {
-        return GenericTypeReflector.isSuperType(GeoJson.class, type.getType());
+        log.info("get type is =========== {} {}", type.getType(), GeoJsonPoint.class.equals(type.getType()));
+        return GeoJsonPoint.class.equals(type.getType());
     }
 }
