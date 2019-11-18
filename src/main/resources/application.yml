@@ -1,0 +1,18 @@
+server:
+  port: 8086
+
+spring:
+  data:
+    mongodb:
+      uri: mongodb://localhost/test_location
+
+graphql:
+  spqr:
+    base-packages:
+      - com.graphql.spqr
+      - org.springframework
+      - org.springframework.data
+    gui:
+      enabled: true
+    relay:
+      connection-check-relaxed: true
